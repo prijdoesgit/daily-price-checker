@@ -20,6 +20,8 @@ class Settings(BaseSettings):
     BRIGHTDATA_PASSWORD: Optional[str] = None
     BRIGHTDATA_HOST: Optional[str] = None
 
+    KIMI_API_KEY: Optional[str] = None
+
     CORS_ORIGINS: list[str] = ["http://localhost:3000", "http://localhost:3001", "http://localhost:4000"]
 
     class Config:
