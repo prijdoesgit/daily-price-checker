@@ -17,9 +17,27 @@ async def lifespan(app: FastAPI):
     async with engine.begin() as conn:
         await conn.run_sync(Base.metadata.create_all)
     log.info("Database tables ready")
+    await _auto_seed()
     yield
     await engine.dispose()
     log.info("Shutdown complete")
+
+
+async def _auto_seed():
+    """Seed reference data on first startup (or after an ephemeral DB reset)."""
+    from app.core.database import AsyncSessionLocal
+    from app.models.medication import Medication
+    from sqlalchemy import select, func
+    try:
+        async with AsyncSessionLocal() as db:
+            count = (await db.execute(select(func.count(Medication.id)))).scalar_one()
+            if count == 0:
+                log.info("Empty database — running seed")
+                from app.data.seed import seed_db
+                await seed_db()
+                log.info("Seed complete")
+    except Exception as e:
+        log.error("Auto-seed failed", error=str(e))
 
 
 app = FastAPI(
