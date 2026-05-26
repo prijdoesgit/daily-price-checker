@@ -39,7 +39,7 @@ export function PriceHistoryChart({ variantId, days = 30 }: Props) {
   }
 
   // Pivot to {date: {platform: price}} for recharts
-  const pivotMap = new Map<string, Record<string, number>>();
+  const pivotMap = new Map<string, Record<string, string | number>>();
   for (const h of history) {
     const dateKey = format(new Date(h.date), "dd MMM");
     if (!pivotMap.has(dateKey)) pivotMap.set(dateKey, { date: dateKey });
