@@ -1,0 +1,15 @@
+fastapi
+uvicorn[standard]
+sqlalchemy[asyncio]
+aiosqlite
+alembic
+pydantic
+pydantic-settings
+python-dotenv
+beautifulsoup4
+httpx
+tenacity
+python-dateutil
+orjson
+structlog
+aiohttp

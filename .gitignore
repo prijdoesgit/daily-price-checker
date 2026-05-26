@@ -1,0 +1,51 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.pdb
+venv/
+.venv/
+*.egg-info/
+dist/
+build/
+.pytest_cache/
+
+# Environment files (never commit real secrets)
+.env
+.env.local
+.env.production
+.env.development.local
+.env.test.local
+.env.production.local
+# Keep .env.example files — they're safe placeholders
+!.env.example
+
+# Database
+*.db
+*.sqlite
+*.sqlite3
+medprice.db
+backend/medprice.db
+
+# Logs
+*.log
+logs/
+
+# Node / Next.js
+node_modules/
+.next/
+out/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
