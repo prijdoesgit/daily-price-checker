@@ -47,7 +47,7 @@ export function PriceHistoryChart({ variantId, days = 30 }: Props) {
     entry[h.platform] = h.price;
   }
   const chartData = Array.from(pivotMap.values());
-  const platformsInData = Array.from(new Set(history.map((h: any) => h.platform as string)));
+  const platformsInData: string[] = Array.from(new Set<string>(history.map((h: any) => h.platform as string)));
 
   return (
     <div className="mt-3 bg-surface-3/30 rounded-xl p-4">
@@ -73,7 +73,7 @@ export function PriceHistoryChart({ variantId, days = 30 }: Props) {
             iconType="circle"
             iconSize={8}
           />
-          {platformsInData.map(platform => (
+          {platformsInData.map((platform: string) => (
             <Line
               key={platform}
               type="monotone"
